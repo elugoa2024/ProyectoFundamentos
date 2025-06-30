@@ -1,5 +1,5 @@
-package Mi_practica03;  
-public class Escape_room {
+package Entrega01;  
+public class Apocalipsis_zombie {
     public static void main(String[] args) {
         utilitarios.Utils.limpiarConsola();
         String nombre;
