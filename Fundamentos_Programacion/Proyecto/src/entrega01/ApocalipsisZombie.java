@@ -1,5 +1,5 @@
-package Entrega01;  
-public class Apocalipsis_zombie {
+package entrega01;  
+public class ApocalipsisZombie {
     public static void main(String[] args) {
         utilitarios.Utils.limpiarConsola();
         String nombre;
