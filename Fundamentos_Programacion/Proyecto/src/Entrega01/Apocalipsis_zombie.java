@@ -16,22 +16,7 @@ public class Apocalipsis_zombie {
         nombre = utilitarios.Utils.leerString("Para comenzar, por favor ingrese su nombre: "); // Solicita el nombre del jugador
         System.out.println(nombre + ", este es tu primer objetivo: Buscar suministros en el almacén. Está cerrado con llave, y solo tienes 2 intentos para encontrarla." ); // Mensaje de objetivo
 
-        switch (utilitarios.Utils.leerEntero("¿Donde desea buscar? \n1. Dentro de un jarron. \n2. Gaveta de escritorio. \n3. Armario. \n4. Debajo de la alfombra.\n")) {// Solicita al jugador donde buscar la llave
-            case 1:
-                opcionAlmacen = 1;
-                break;
-            case 2:
-                opcionAlmacen = 2;
-                break;
-            case 3:
-                opcionAlmacen = 3;
-                break;
-            case 4:
-                opcionAlmacen = 4;
-                break;
-            default:
-                opcionAlmacen = 0;
-        }
+        opcionAlmacen = (utilitarios.Utils.leerEntero("¿Donde desea buscar? \n1. Dentro de un jarron. \n2. Gaveta de escritorio. \n3. Armario. \n4. Debajo de la alfombra.\n")); // Solicita al jugador donde buscar la llave
         
         /*Si el jugador elige la opción correcta, avanza al segundo 
         escenario de la caja fuerte. Si no permanece en el primer escenario 
@@ -68,22 +53,7 @@ public class Apocalipsis_zombie {
         // Continua en el primer escenario
         } else { // Si el jugador no elige la opción correcta, permanece en el primer escenario
             System.out.println("Aquí no está, te queda un intento."); // Mensaje de error al no encontrar la llave
-            switch (utilitarios.Utils.leerEntero("¿Donde desea buscar? \n1. Dentro de un jarron. \n2. Gaveta de escritorio. \n3. Armario. \n4. Debajo de la alfombra.\n")) { // Solicita al jugador donde buscar la llave nuevamente
-            case 1:
-                opcionAlmacen = 1;
-                break;
-            case 2:
-                opcionAlmacen = 2;
-                break;
-            case 3:
-                opcionAlmacen = 3;
-                break;
-            case 4:
-                opcionAlmacen = 4;
-                break;
-            default:
-                opcionAlmacen = 0;
-            }
+            opcionAlmacen = (utilitarios.Utils.leerEntero("¿Donde desea buscar? \n1. Dentro de un jarron. \n2. Gaveta de escritorio. \n3. Armario. \n4. Debajo de la alfombra.\n")); // Solicita al jugador donde buscar la llave
 
             if (opcionAlmacen == 4) { // Si el jugador elige la opción correcta en el segundo intento, avanza al segundo escenario
                 //Escenario 2

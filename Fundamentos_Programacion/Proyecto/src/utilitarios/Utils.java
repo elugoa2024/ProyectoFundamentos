@@ -380,7 +380,7 @@ public class Utils {
 }
 
     public static String leerCadena(String string) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'leerCadena'");
     }
 
