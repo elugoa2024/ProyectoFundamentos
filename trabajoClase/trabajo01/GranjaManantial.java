@@ -1,9 +1,13 @@
+/**
+ * Simulación de Cosecha en la Granja El Manantial.
+ * El programa simula la recolección de frutas (mangos y naranjas) en una finca.
+ * La recolección se detiene si llueve demasiado o si se llena la canasta.
+ * Al final, se muestra un resumen de la recoleccion.
+*/
+
 package trabajo01;
 
 public class GranjaManantial {
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
         // declaracion de variables  
         int cantidadSecciones, arbolesSeccion, capacidadFruta, frutas, lluvia, frutaPrecio, seccionActual, totalFrutas, arbol, frutaGanancia, totalMango, totalNaranja, bono, frutasRecolectadas, frutasNoRecolectadas, frutasDisponibles;
@@ -30,8 +34,7 @@ public class GranjaManantial {
         while (seccionActual <= cantidadSecciones && lluvia > 3 && capacidadFruta > totalFrutas) {
 
             lluvia = utilitarios.Utils.generarNumerosEntre(1, 100); // Genera un nivel de lluvia entre 1 y 100 para cada sección
-            
-            System.out.println("El nivel de lluvia actual es: " + lluvia);
+            System.out.println("\nEl nivel de lluvia actual es: " + lluvia);
             
             // Si el nivel de lluvia es mayor a 3, se procede a recolectar frutas
             if (lluvia > 3) {
@@ -47,7 +50,6 @@ public class GranjaManantial {
                     System.out.println("Cantidad de frutas: " + frutas);
                     frutasDisponibles = frutas;
 
-                    // 
                     if (frutasRecolectadas + frutas > capacidadFruta) { // Calcula las frutas disponibles
                         frutasDisponibles = capacidadFruta - frutasRecolectadas;
                     }
@@ -67,6 +69,7 @@ public class GranjaManantial {
 
                     // Si ya se llenó la canasta, salir del ciclo
                     if (frutasRecolectadas >= capacidadFruta) {
+                        System.out.println("\nSe finalizó la cosecha porque se llenó la canasta.");
                         break;
                     }
 
@@ -88,17 +91,19 @@ public class GranjaManantial {
         // Verifica si la persona puede obtener el bono.
         if (totalMango > 50 || totalNaranja > 50) {
             bono = 3000;
-            System.out.printf("%-30s : %s%n", "Bono", "Ha recibido el bono");
+            
+            System.out.printf("\n%-30s : %s%n", "Bono", "Ha recibido el bono");
         } else {
             bono = 0;
-            System.out.printf("%-30s : %s%n", "Bono", "No ha recibido el bono");
+            System.out.printf("\n%-30s : %s%n", "Bono", "No ha recibido el bono");
         }
 
+        //salidas
         System.out.println("\n===== Resumen de la cosecha =====");
         System.out.printf("%-30s : %5d%n", "Frutas recolectadas", frutasRecolectadas);
         System.out.printf("%-30s : %5d%n", "  - Mangos", totalMango);
         System.out.printf("%-30s : %5d%n", "  - Naranjas", totalNaranja);
         System.out.printf("%-30s : %5d%n", "Frutas no recolectadas", frutasNoRecolectadas);
-        System.out.printf("%-30s : ₡%,8.2f%n", "Ganancia total", (double)(frutaGanancia + bono));
+        System.out.printf("%-30s : %5d%n", "Ganancia total", frutaGanancia + bono);
     }
 }
