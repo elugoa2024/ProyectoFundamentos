@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="GranjaManantial"/>
+        <attribute name="authors" value="Katherine Canales"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2025-07-13 02:34:37 p.&#160;m."/>
+        <attribute name="created" value="S2F0aGVyaW5lIENhbmFsZXM7S0FUSFlDQU5BTEVTOzIwMjUtMDctMTM7MDE6NDI6MDYgcC7CoG0uOzQxMzE="/>
+        <attribute name="edited" value="S2F0aGVyaW5lIENhbmFsZXM7S0FUSFlDQU5BTEVTOzIwMjUtMDctMTM7MDI6MDY6MDkgcC7CoG0uOzI7ZXZlcmE7REVTS1RPUC1WRjdCNjVSOzIwMjUtMDctMDY7MDI6MjY6MTkgUE07VHJhYmFqb19DbGFzZVsxXS5mcHJnOzkyMjg="/>
+        <attribute name="edited" value="S2F0aGVyaW5lIENhbmFsZXM7S0FUSFlDQU5BTEVTOzIwMjUtMDctMTM7MDI6MzQ6MzcgcC7CoG0uOzI7NDI0Ng=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="cantidadSecciones, arbolesSeccion, capacidadFruta, frutas, lluvia, frutaPrecio, seccionActual, totalFrutas, arbol, frutaGanancia, totalMango, totalNaranja, bono, frutasRecolectadas, frutasNoRecolectadas, frutasDisponibles, tipoFruta" type="Integer" array="False" size=""/>
+            <output expression="&quot;Ingrese la cantidad de secciones de la granja: &quot;" newline="True"/>
+            <input variable="cantidadSecciones"/>
+            <output expression="&quot;Ingrese la cantidad de &#225;rboles por secci&#243;n: &quot;" newline="True"/>
+            <input variable="arbolesSeccion"/>
+            <output expression="&quot;Ingrese la capacidad maxima de la canasta: &quot;" newline="True"/>
+            <input variable="capacidadFruta"/>
+            <assign variable="frutas" expression="0"/>
+            <assign variable="totalFrutas" expression="0"/>
+            <assign variable="totalMango" expression="0"/>
+            <assign variable="totalNaranja" expression="0"/>
+            <assign variable="frutasRecolectadas" expression="0"/>
+            <assign variable="frutasNoRecolectadas" expression="0"/>
+            <assign variable="lluvia" expression="4"/>
+            <assign variable="seccionActual" expression="1"/>
+            <while expression="seccionActual &lt;= cantidadSecciones &amp;&amp; lluvia &gt; 3 &amp;&amp; capacidadFruta &gt; totalFrutas">
+                <assign variable="lluvia" expression="Random (100) + 1"/>
+                <output expression="&quot;El nivel de lluvia actual es: &quot; &amp; lluvia" newline="True"/>
+                <if expression="lluvia &gt; 3">
+                    <then>
+                        <output expression="&quot;Ingrese el tipo de fruta en la seccion&quot;" newline="True"/>
+                        <output expression="&quot;1 = Mango 2 = Naranja: &quot;" newline="True"/>
+                        <input variable="tipoFruta"/>
+                        <assign variable="arbol" expression="1"/>
+                        <while expression="arbol &lt;= arbolesSeccion">
+                            <assign variable="frutas" expression="Random(8) + 3"/>
+                            <output expression="&quot;Cantidad de frutas: &quot; &amp; frutas" newline="True"/>
+                            <assign variable="frutasDisponibles" expression="frutas"/>
+                            <if expression="frutasRecolectadas + frutas &gt; capacidadFruta">
+                                <then>
+                                    <assign variable="frutasDisponibles" expression="capacidadFruta - frutasRecolectadas"/>
+                                </then>
+                                <else/>
+                            </if>
+                            <assign variable="frutasRecolectadas" expression="frutasRecolectadas + frutasDisponibles"/>
+                            <assign variable="totalFrutas" expression="totalFrutas + frutasDisponibles"/>
+                            <if expression="tipoFruta == 1">
+                                <then>
+                                    <assign variable="totalMango" expression="totalMango + frutasDisponibles"/>
+                                </then>
+                                <else>
+                                    <assign variable="totalNaranja" expression="totalNaranja + frutasDisponibles"/>
+                                </else>
+                            </if>
+                            <assign variable="frutasNoRecolectadas" expression="frutasNoRecolectadas + frutas - frutasDisponibles"/>
+                            <if expression="frutasRecolectadas &gt;= capacidadFruta">
+                                <then>
+                                    <output expression="&quot;Se finaliz&#243; la cosecha porque se llen&#243; la canasta.&quot;" newline="True"/>
+                                    <breakpoint expression="" always="True"/>
+                                </then>
+                                <else/>
+                            </if>
+                            <assign variable="arbol" expression="arbol + 1"/>
+                        </while>
+                    </then>
+                    <else>
+                        <output expression="&quot;Luvia intensa, la cosecha se detiene.&quot;" newline="True"/>
+                        <assign variable="frutasNoRecolectadas" expression="capacidadFruta - frutasRecolectadas"/>
+                    </else>
+                </if>
+                <assign variable="seccionActual" expression="seccionActual + 1"/>
+            </while>
+            <assign variable="frutaPrecio" expression="200"/>
+            <assign variable="frutaGanancia" expression="frutasRecolectadas * frutaPrecio"/>
+            <if expression="totalMango &gt; 50 || totalNaranja &gt; 50">
+                <then>
+                    <assign variable="bono" expression="3000"/>
+                    <output expression="&quot;Ha recibido el bono&quot;" newline="True"/>
+                </then>
+                <else>
+                    <assign variable="bono" expression="0"/>
+                    <output expression="&quot;No ha recibido el bono.&quot;" newline="True"/>
+                </else>
+            </if>
+            <output expression="&quot;===== Resumen de la cosecha =====&quot;" newline="True"/>
+            <output expression="&quot;Frutas recolectadas: &quot; &amp; frutasRecolectadas" newline="True"/>
+            <output expression="&quot;  - Mangos: &quot; &amp; totalMango" newline="True"/>
+            <output expression="&quot;  - Naranjas: &quot; &amp; totalNaranja" newline="True"/>
+            <output expression="&quot;Frutas no recolectadas: &quot; &amp; frutasNoRecolectadas" newline="True"/>
+            <output expression="&quot;Ganancia total: &quot; &amp; frutaGanancia + bono" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
