@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="EscapeRoom"/>
+        <attribute name="authors" value="Katherine Canales"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2025-07-26 02:18:15 a.&#160;m."/>
+        <attribute name="created" value="S2F0aGVyaW5lIENhbmFsZXM7S0FUSFlDQU5BTEVTOzIwMjUtMDYtMjM7MDU6NTM6MTEgcC7CoG0uOzQxMzM="/>
+        <attribute name="edited" value="TGVub3ZvO0RFU0tUT1AtOUFUNkMyUzsyMDI1LTA3LTIzOzA2OjIwOjA1IHAuwqBtLjsxO0xlbm92bztERVNLVE9QLTlBVDZDMlM7MjAyNS0wNy0yMzswNjoxNjoxMCBwLsKgbS47ZXhwbG9yYWNpb25fZmluYWwuZnByZzs5MDM3"/>
+        <attribute name="edited" value="TGVub3ZvO0RFU0tUT1AtOUFUNkMyUzsyMDI1LTA3LTIzOzA3OjQxOjAzIHAuwqBtLjsxO0xlbm92bztERVNLVE9QLTlBVDZDMlM7MjAyNS0wNy0yMzswNjo0Njo1OSBwLsKgbS47cnJlZ2xvLmZwcmc7NzkwMQ=="/>
+        <attribute name="edited" value="TGVub3ZvO0RFU0tUT1AtOUFUNkMyUzsyMDI1LTA3LTIzOzEwOjEwOjI4IHAuwqBtLjsxMDszNDE5"/>
+        <attribute name="edited" value="ZXZlcmE7UENTVEVWRU47MjAyNS0wNy0yNDsxMTozNTo1MSBwLuKAr20uOzE7MTA5MzI="/>
+        <attribute name="edited" value="S2F0aGVyaW5lIENhbmFsZXM7S0FUSFlDQU5BTEVTOzIwMjUtMDctMjY7MDI6MTg6MTUgYS7CoG0uOzEzOzQyODM="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nombre, pistasEncontradas" type="String" array="False" size=""/>
+            <declare name="opcionAlmacen, codigoCajaFuerte, valorPistas, objeto, turno" type="Integer" array="False" size=""/>
+            <declare name="intentosAlmacen, intentosCajaFuerte, intentosFinales" type="Integer" array="False" size=""/>
+            <assign variable="valorPistas" expression="0"/>
+            <assign variable="pistasEncontradas" expression="&quot;&quot;"/>
+            <assign variable="turno" expression="1"/>
+            <assign variable="intentosAlmacen" expression="0"/>
+            <assign variable="intentosCajaFuerte" expression="0"/>
+            <assign variable="intentosFinales" expression="0"/>
+            <comment text="Interaccion #1: Introduccion e intentar abrir el almacen."/>
+            <output expression="&quot;La infeccion lo cambi&#243; todo. Ya casi no queda nadie con vida. Buscando refugio te adentras en una antigua casa abandonada.&quot;" newline="True"/>
+            <output expression="&quot;Pero no es un lugar seguro.Su due&#241;o la converti&#243; en una fortaleza llena de trampas y enigmas.&#161;Estas atrapado! &#161;Los zombies no estan lejos!&quot;" newline="True"/>
+            <output expression="&quot;Solo resolviendo los acertijos podr&#225;s escapar...o te unir&#225;s a ellos? Bienvenido a Escape Room.&quot;" newline="True"/>
+            <output expression="&quot;Para comenzar, por favor ingrese su nombre: &quot;" newline="True"/>
+            <input variable="nombre"/>
+            <output expression="nombre &amp; &quot;, este es tu primer objetivo: Buscar suministros en el almac&#233;n. Est&#225; cerrado con llave, y solo tienes 2 intentos para encontrarla.&quot;" newline="True"/>
+            <while expression="intentosAlmacen &lt; 2">
+                <assign variable="intentosAlmacen" expression="intentosAlmacen + 1"/>
+                <output expression="&quot;Esta es tu oportunidad &#191;Donde deseas buscar? 1. Dentro de un jarr&#243;n. 2. Gaveta de escritorio. 3. Armario. 4. Debajo de la alfombra&quot;" newline="True"/>
+                <input variable="opcionAlmacen"/>
+                <if expression="opcionAlmacen == 4">
+                    <then>
+                        <output expression="&quot;&#161;Buen trabajo! Tu instinto no falla. Ya tienes la llave y la esperanza en tus manos.&quot; &amp; &quot;Lograste entrar al almacen.&quot;" newline="True"/>
+                        <comment text="Interaccion #2: Abrir la caja fuerte"/>
+                        <output expression="&quot;Dentro del almacen, una caja fuerte bloquea tu camino en el cual s&#243;lo un c&#243;digo la abrir&#225;. Tienes solo 2 intentos para lograrlo. Pista: En los espejos del ba&#241;o dec&#237;a: Dos numeros que sumen 6.&quot;" newline="True"/>
+                        <output expression="&quot;Afuera, los zombis golpean la puerta con furia, pum pum&#8230; arh arh&#8230;&#191;Podr&#225;s descubrir el c&#243;digo oculto antes que los zombis rompan la puerta?&quot;" newline="True"/>
+                        <while expression="intentosCajaFuerte &lt; 2">
+                            <assign variable="intentosCajaFuerte" expression="intentosCajaFuerte + 1"/>
+                            <output expression="&quot;Ingrese el codigo de la caja fuerte: &quot;" newline="True"/>
+                            <input variable="codigoCajaFuerte"/>
+                            <if expression="codigoCajaFuerte == 42 || codigoCajaFuerte ==24">
+                                <then>
+                                    <output expression="&quot;&#161;Felicidades!Abriste la caja fuerte con precisi&#243;n, tomaste el arma que all&#237; se encontraba y acabaste con los zombis sin titubear.&quot;" newline="True"/>
+                                    <output expression="&quot;La amenaza ha sido eliminada...por ahora!&quot;" newline="True"/>
+                                    <comment text="Interaccion #3: Exploracion del laberinto (5 turnos)"/>
+                                    <output expression="&quot;Gracias a esto logras tener un momento de tranquilidad y encuentras una especie de laberinto lleno de objetos misteriosos y un letrero que decia&quot;" newline="True"/>
+                                    <output expression="&quot;5 OPORTUNIDADES DE ELEGIR, ESCOGE BIEN Y SER&#193;S LIBRE&quot;" newline="True"/>
+                                    <while expression="turno &lt;= 5">
+                                        <output expression="&quot;Turno: &quot; &amp; turno" newline="True"/>
+                                        <output expression="&quot;Elige uno de estos objetos: 1.Triangulo, 2.Reloj, 3. Cuadro, 4.Florero, 5.Juguete, 6.Cuchara, 7.Llanta&quot;" newline="True"/>
+                                        <input variable="objeto"/>
+                                        <if expression="objeto == 1">
+                                            <then>
+                                                <assign variable="pistasEncontradas" expression="pistasEncontradas &amp; &quot; No encontraste nada en el triangulo.&quot;"/>
+                                            </then>
+                                            <else>
+                                                <if expression="objeto == 2">
+                                                    <then>
+                                                        <assign variable="pistasEncontradas" expression="pistasEncontradas &amp; &quot; Encontraste un numero primo en el reloj.&quot;"/>
+                                                        <assign variable="valorPistas" expression="valorPistas + 6"/>
+                                                    </then>
+                                                    <else>
+                                                        <if expression="objeto == 3">
+                                                            <then>
+                                                                <assign variable="pistasEncontradas" expression="pistasEncontradas &amp; &quot; No encontraste nada en el cuadro.&quot;"/>
+                                                            </then>
+                                                            <else>
+                                                                <if expression="objeto == 4">
+                                                                    <then>
+                                                                        <assign variable="pistasEncontradas" expression="pistasEncontradas &amp; &quot; No encontraste nada en el florero.&quot;"/>
+                                                                    </then>
+                                                                    <else>
+                                                                        <if expression="objeto == 5">
+                                                                            <then>
+                                                                                <assign variable="pistasEncontradas" expression="pistasEncontradas &amp; &quot; No encontraste nada en el juguete.&quot;"/>
+                                                                            </then>
+                                                                            <else>
+                                                                                <if expression="objeto == 6">
+                                                                                    <then>
+                                                                                        <assign variable="pistasEncontradas" expression="pistasEncontradas &amp; &quot; Encontraste un color cristalino en la cuchara.&quot;"/>
+                                                                                        <assign variable="valorPistas" expression="valorPistas + 6"/>
+                                                                                    </then>
+                                                                                    <else>
+                                                                                        <if expression="objeto == 7">
+                                                                                            <then>
+                                                                                                <assign variable="pistasEncontradas" expression="pistasEncontradas &amp; &quot; No encontraste nada en la llanta.&quot;"/>
+                                                                                            </then>
+                                                                                            <else/>
+                                                                                        </if>
+                                                                                    </else>
+                                                                                </if>
+                                                                            </else>
+                                                                        </if>
+                                                                    </else>
+                                                                </if>
+                                                            </else>
+                                                        </if>
+                                                    </else>
+                                                </if>
+                                            </else>
+                                        </if>
+                                        <assign variable="turno" expression="turno + 1"/>
+                                    </while>
+                                    <output expression="&quot;Se acabaron los turnos.&quot;" newline="True"/>
+                                    <output expression="&quot;Resumen detallado de tus pistas: &quot;" newline="True"/>
+                                    <output expression="pistasEncontradas" newline="True"/>
+                                    <comment text="Interacci&#243;n #4: Intento final para escapar de la habitaci&#243;n"/>
+                                    <output expression="&quot;Te encuentras con la puerta final, solo podr&#225;s abrirla si hiciste todo correctamente. &#161;Vamos a analizarlo!&quot;" newline="True"/>
+                                    <while expression="intentosFinales &lt; 2">
+                                        <if expression="opcionAlmacen == 4 &amp;&amp; (codigoCajaFuerte == 42 ||codigoCajaFuerte == 24) &amp;&amp; valorPistas &gt;= 6">
+                                            <then>
+                                                <output expression="&quot;Luego de un analisis de tu recorrido pudimos observar que cumpliste con los requisitos necesarios.&quot;" newline="True"/>
+                                                <output expression="&quot;&#161;Felicidades! Lograste salir de la habitacion.&quot;" newline="True"/>
+                                                <output expression="&quot;Fin del juego&quot;" newline="True"/>
+                                                <breakpoint expression="" always="True"/>
+                                            </then>
+                                            <else>
+                                                <assign variable="intentosFinales" expression="intentosFinales + 1"/>
+                                                <if expression="intentosFinales &lt; 2">
+                                                    <then>
+                                                        <output expression="&quot;Lo sentimos, luego de nuestro analisis observamos que no cumples con los requisitos necesarios para salir.&quot;" newline="True"/>
+                                                    </then>
+                                                    <else>
+                                                        <output expression="&quot;En tu segundo intento tratas de salir forcejeando la puerta sin cumplir los requisitos, pero...esto no funciona as&#237; la puerta se ha bloqueado.&quot;" newline="True"/>
+                                                        <output expression="&quot;Fin del juego.&quot;" newline="True"/>
+                                                        <breakpoint expression="" always="True"/>
+                                                    </else>
+                                                </if>
+                                            </else>
+                                        </if>
+                                    </while>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Intento fallido!&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </while>
+                        <output expression="&quot;Has fallado al abrir la caja fuerte. &#161;Los zombis han acabado contigo! Fin del juego.&quot;" newline="True"/>
+                        <breakpoint expression="" always="True"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Fallaste...&quot;" newline="True"/>
+                    </else>
+                </if>
+            </while>
+            <output expression="&quot;No lograste encontrar la llave del almacen. Fin del juego.&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
